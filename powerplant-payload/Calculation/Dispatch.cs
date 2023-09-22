@@ -14,7 +14,7 @@ namespace powerplant_payload.Calculation
             {
                 foreach (var plant in meritOrder)
                 {
-                    if (plant.Type == "windturbine" && windEnergyAvailable > 0)
+                    if (plant.Type == "windturbine" )
                     {
                         var windGeneration = Math.Min(windEnergyAvailable, plant.Pmax);
 
@@ -36,7 +36,7 @@ namespace powerplant_payload.Calculation
                 if (plant.Type != "windturbine")
                 {
                     var maxGeneration = Math.Min(plant.Pmax, load);
-                    var cost = GetFuelCost(payload.Fuels, plant) * maxGeneration; // Use the GetFuelCost method
+                    var cost = GetFuelCost(payload.Fuels, plant) * maxGeneration;
                     generationPlan.Add(new GenerationPlan {
                         Name = plant.Name, 
                         Power = maxGeneration 
@@ -72,7 +72,7 @@ namespace powerplant_payload.Calculation
                     var co2KerosineCost = fuels.CO2EuroPerTon * (kerosineCost / fuels.KerosineEuroPerMWh);
                     return kerosineCost + co2KerosineCost;
                 default:
-                    return 0; // Wind turbines have zero fuel cost
+                    return 0;
             }
         }
     }
