@@ -42,11 +42,11 @@ To calculate the economic dispatch for a given scenario, you can provide input i
   ]
 }
 ```
-API
+# API
 
 POST /Productionplan: Calculate the economic dispatch based on the provided input.
 
-Installation
+# Installation
 
 To run this project locally, follow these steps:
 
